@@ -25,7 +25,7 @@ var _qs2 = _interopRequireDefault(_qs);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _page2.default)('/', function (ctx, next) {
+(0, _page2.default)('/api-tvmazejs2015', function (ctx, next) {
   var $loader = (0, _jquery2.default)('<div class="loader">');
   $loader.appendTo(_tvShowsContainer2.default);
   _tvShowsContainer2.default.find('.chat-container').remove();
@@ -53,7 +53,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
   var $loader = (0, _jquery2.default)('<div class="loader">');
   $loader.appendTo(_tvShowsContainer2.default);
   var busqueda = _qs2.default.parse(ctx.querystring);
-  console.log(busqueda);
   (0, _tvmazeApiClient.searchShows)(busqueda, function (shows) {
     $loader.remove();
     (0, _render.renderSearch)(shows);
@@ -125,7 +124,6 @@ function renderChat(id) {
 
 function renderSearch(shows) {
   shows.forEach(function (element) {
-    // console.log(show.show)
     var article = template.replace(':name:', element.show.name).replace(':img:', element.show.image ? element.show.image.medium : '').replace(':summary:', element.show.summary).replace(':img alt:', element.show.name + ' Logo').replace(':id:', element.show.id).replace(':count:', element.show.count);
 
     var $article = (0, _jquery2.default)(article);
